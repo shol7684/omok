@@ -1,0 +1,380 @@
+:root {
+    --space: 30px;
+    --board-size: calc(var(--space) * 20);
+    --stone-size: calc((var(--space) - 10px));
+    --roomList-width: 500px;
+    --roomList-height: 85vh;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.swal-button--confirm {
+	background: rgb(226, 226, 177);
+}
+
+ul, li {
+    list-style: none;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+textarea {
+    resize: none;
+}
+textarea:focus {
+   outline: none;
+}
+
+/* 로딩바 */
+.loadingBox .circle {
+	position:fixed; 
+	left:50%; top:50%; 
+	transform:translate(-50%, -50%); 
+	width:30px; height:30px; border:5px solid #fff; 
+	border-top: 5px solid red; 
+	border-radius:50em; 
+	transition:all .2s;
+    animation-name:spinCircle;
+    animation-duration:.8s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+    z-index: 100;
+}
+
+@keyframes spinCircle {
+    from {
+        transform:translate(-50%, -50%) rotate(0);
+    }
+    to {
+        transform:translate(-50%, -50%) rotate(360deg);
+    }
+}
+/* 로딩바 */
+
+
+
+/* 방 목록 */
+.roomList {
+    border: 1px solid rgb(237, 190, 190);
+    width: var(--roomList-width);
+    height: var(--roomList-height);
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    background: rgb(226, 226, 177);
+    
+    display: none;
+}
+
+.roomList h1 {
+    text-align: center;
+    margin-top: 5px;
+    height: 30px;
+}
+
+.roomList .create_room {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+
+.roomList ul {
+    /* background-color: red; */
+    padding: 1%;
+    height: calc(var(--roomList-height) - 38px);
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.roomList ul {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.roomList ul::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+.roomList li {
+    background: #fff;
+    border-radius: 5px;
+    margin: 1%;
+    display: flex;
+    border: 1px solid #ddd;
+    height: 50px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.roomList li div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.roomList li div:nth-child(1) {
+    flex: 2;
+    text-align: left;
+    margin-left: 5px;
+}
+
+.roomList li div:nth-child(2) {
+    flex: 5;
+    text-align: left;
+}
+
+.roomList li div:nth-child(3) {
+    flex: 1;
+    text-align: center;
+}
+/* 방 목록 */
+
+
+
+
+
+/* 게임 방  */
+.room {
+    border: 1px solid #000;
+    width: calc(var(--board-size) * 1.8);
+    margin: 3% auto 0;
+    display: flex;
+    background: rgb(241, 244, 245);
+	display: none;
+}
+
+.room .room_info {
+    width: calc(var(--board-size) * 0.8);
+    margin: -1%;
+    padding: 2% 2% 1% 1%;
+}
+
+
+.room .room_info > div {
+    border: 1px solid rgb(189, 177, 177);
+    width: 100%;
+    padding: 1%;
+    margin-bottom: 2%;
+    background: #fff;
+}
+
+.room .room_info .title {
+    height: 8%;
+    display: flex;
+    align-items: center;
+}
+
+.room .room_info .title span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.room .room_info .users {
+    height: 15%;
+}
+
+.room .room_info .status {
+    height: 10%;
+    border: none;
+    background: none;
+    display: flex;
+	justify-content: space-between;
+	font-size: 28px;
+}
+
+.room .room_info .status .timer_area {
+	
+	width: 30%;
+}
+
+.room .room_info .status .timer {
+	border: 1px solid #000; 
+	width: 100%;
+	height: 100%;
+ 	text-align: center;
+	background: #fff;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	font-weight: bold; 
+	display: none;
+}
+
+.room .room_info .status .timer .timer_text {
+	vertical-align: middle;
+}
+
+.room .room_info .status button {
+    width: 30%;
+    font-size: 28px;
+    background: rgb(219, 228, 219);
+    cursor: pointer;
+}
+
+.room .room_info .chat {
+    height: 61%;
+}
+
+.room .room_info .chat .content {
+    height: calc(100% - 50px);
+}
+
+.room .room_info .chat .chat_input {
+    height: 50px;
+    background: red;
+    /* border: 1px solid #000; */
+}
+.room .room_info .chat .chat_input textarea {
+    height: 100%;
+    width: 100%;
+    padding: 1%;
+    /* border: none; */
+    font-size: 16px;
+}
+
+
+
+
+.board_container {
+    border: 1px solid #000;
+    width: var(--board-size);
+    height: var(--board-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #DCB35C;
+    position: relative;
+    margin: 1%;
+}
+
+
+
+
+
+
+
+/* 선 그리기 */
+
+table.line {
+    border-spacing: unset;
+    border-collapse: unset;
+    text-indent: unset;
+    width: var(--board-line);
+    height: var(--board-line);
+    box-sizing: border-box;
+    position: absolute;
+}
+
+table.line td {
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    width: var(--space);
+    height: var(--space);
+    padding: 0px;
+    position: relative;
+    box-sizing: border-box;
+} 
+
+table.line td:first-child {
+    border-left: 1px solid #000;
+}
+
+table.line tr:first-child td {
+    border-top: 1px solid #000;
+}
+
+table.line td .point {
+    width: 100%;
+    height: 100%;
+}
+
+table.line td .point > div {
+    width: 20%;
+    height: 20%;
+    background: black;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+/* 선 그리기 */
+
+
+
+/* 칸  */
+
+table.board {
+    border-spacing: unset;
+    border-collapse: unset;
+    text-indent: unset;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    position: absolute;
+}
+
+
+table.board td {
+    /* background: rgba(200,0,0,0.5); */
+    width: var(--space);
+    height: var(--space);
+    padding: 0px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* 칸  */
+
+table.board .stone {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+table.board .stone div {
+    width: var(--stone-size);
+    height: var(--stone-size);
+    border-radius: 50%;
+    box-shadow: 3px 3px 3px rgb(0 0 0 / 50%);
+} 
+
+
+
+table.board .stone.black div {
+    background-color: #000;
+}
+table.board .stone.white div {
+    background-color: #fff;
+}
+
+
+.start{
+    font-size: 10rem;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0px -3px #000, 3px 0px #000, 0px 3px #000, -3px 0px #000;
+    animation: start 1s infinite;
+
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    z-index: 200;
+    display: none;
+}
+
+
+
+

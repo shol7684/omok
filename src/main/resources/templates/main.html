@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오목</title>
+
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<div class="loadingBox">
+	    <div class="circle"></div>
+	</div>
+			
+	<main>
+       		<button class="timer_start">시작</button>
+       <div class="roomList">
+       		<div class="timer"></div>
+       		<button class="timer_stop">정지</button>
+           <h1>대기실</h1>
+           <button class="create_room">방만들기</button>
+            <ul></ul>
+        </div>
+
+
+        <div class="room">
+            <div class="board_container">
+                <table class="line"></table> 
+                <table class="board"></table>
+            </div>
+
+            <div class="room_info">
+                <div class="title">
+                    <span>
+                    </span>
+                </div>
+                <div class="users">
+                    <div></div>
+                    <div></div>
+                </div>
+                
+                <div class="status">
+                	<div class="timer_area">
+                		<div class="timer">332</div>
+                	</div>
+					<button></button>
+					<button class="exit">나가기</button>
+                </div>
+                
+                <div class="chat">
+                    <div class="content">
+                        <ul>
+                        </ul>
+                    </div>
+                    <div class="chat_input">
+                        <textarea></textarea>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+    
+    <span class="start"></span>
+	
+    
+ 	<!-- sock js -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
+	<!-- STOMP -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+ 	<script type="module" th:src="@{/js/main.js}"></script>
+    
+    
+</body>
+</html>
